@@ -9,6 +9,10 @@ class GenericStack<T>
     }
     public T pop()
     {
+        if(isEmpty() )
+        {
+            throw new EmptyStackException();
+        }
         return stack.pop();
     }
     public boolean isEmpty()
