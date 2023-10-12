@@ -1,5 +1,6 @@
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -39,6 +40,17 @@ public class Question2 //FirstNonRepeatingStream
     {
         return inBuffer.toString();
     }
+    public char getFirstNonRepeating() 
+    {
+        for (Map.Entry<Character, Integer> e : count.entrySet()) 
+        {
+            if (e.getValue() == 1) 
+            {
+                return e.getKey();
+            }
+        }
+        return '-';
+    }
 
     public static void main(String[] args) 
     {
@@ -51,8 +63,9 @@ public class Question2 //FirstNonRepeatingStream
         for (char c : input.toCharArray()) 
         {
             st.add(c);
-            System.out.println("Stream: " + st.getStream());
         }
+        System.out.println("Stream: " + st.getStream());
+        System.out.println("First non-repeating character: " + st.getFirstNonRepeating());
         s.close();
     }
 }
