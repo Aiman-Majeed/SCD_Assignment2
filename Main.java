@@ -26,6 +26,9 @@ class GenericStack<T>
 }
 public class Main 
 {
+    /**
+     * @param args
+     */
     public static void main(String[] args) 
     {
         Scanner s = new Scanner(System.in);
@@ -33,6 +36,7 @@ public class Main
         int size = s.nextInt();
         GenericStack<Integer> intS = new GenericStack<>();
         GenericStack<String> strS = new GenericStack<>();
+        GenericStack<Float> floatS = new GenericStack<>();
 
         System.out.println("Enter Stack Values");
         for(int i = 0; i < size; i++)
@@ -40,6 +44,10 @@ public class Main
             if(s.hasNextInt())
             {
                 intS.push(s.nextInt());
+            }
+            else if(s.hasNextFloat())
+            {
+                floatS.push(s.nextFloat());
             }
             else
             {
@@ -56,8 +64,18 @@ public class Main
                 case "pop":
                     try
                     {
-                        Integer popped = intS.pop();
-                        System.out.println("Popped: " + popped);
+                        if (!intS.isEmpty()) 
+                        {
+                            System.out.println("Popped from Integer Stack: " + intS.pop());
+                        } 
+                        else if (!floatS.isEmpty())
+                        {
+                            System.out.println("Popped from Float Stack: " + floatS.pop());
+                        } 
+                        else
+                        {
+                            System.out.println("Popped from String Stack: " + strS.pop());
+                        } 
                     }
                     catch(EmptyStackException ex)
                     {
@@ -66,9 +84,13 @@ public class Main
                     break;
                 case "size":
                     System.out.println("Stack Size: " + intS.size());
+                    System.out.println("floatStack size: " + floatS.size());
+                    System.out.println("stringStack size: " + strS.size());
                     break;
                 case "isEmpty":
-                    System.out.println(intS.isEmpty() ? "Stack is empty." : "Stack is not empty.");
+                    System.out.println(intS.isEmpty() ? "Integer Stack is empty." : "Integer Stack is not empty.");
+                    System.out.println(floatS.isEmpty() ? "Float Stack is empty." : "Float Stack is not empty.");
+                    System.out.println(strS.isEmpty() ? "String Stack is empty." : "String Stack is not empty.");
                     break;
                 case "Quit":
                     System.out.println("Program Exited!");
