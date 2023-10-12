@@ -47,5 +47,35 @@ public class Main
                 strS.push(in);
             }
         }
+        System.out.println("Perform Stack Operations");
+        while (true) 
+        { 
+            String opr = s.next();
+            switch(opr)
+            {
+                case "pop":
+                    try
+                    {
+                        Integer popped = intS.pop();
+                        System.out.println("Popped: " + popped);
+                    }
+                    catch(EmptyStackException ex)
+                    {
+                        System.out.println("Stack is Empty.");
+                    }
+                    break;
+                case "size":
+                    System.out.println("Stack Size: " + intS.size());
+                    break;
+                case "isEmpty":
+                    System.out.println(intS.isEmpty() ? "Stack is empty." : "Stack is not empty.");
+                    break;
+                case "Quit":
+                    System.out.println("Program Exited!");
+                    return;
+                default:
+                    System.out.println("Invalid input.");
+            }
+        }
     }
 }
